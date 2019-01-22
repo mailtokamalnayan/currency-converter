@@ -16,18 +16,25 @@ class Home extends Component {
     handlePressQuoteCurrency = () => {
         console.log("Press Quote");
     }
+    handleTextChange = (text) => {
+        console.log("Changed text", text);
+    }
 
     render() {
         return (
         <Container>
             <StatusBar barStyle={"default"}/>
             <InputWithButton
+                defaultValue={TEMP_BASE_PRICE}
                 onPress={this.handlePressBaseCurrency}
-                buttonText={TEMP_BASE_CURR} />
+                buttonText={TEMP_BASE_CURR}
+                keyboardType="numeric" 
+                onChangeText={this.handleTextChange}/>
             <InputWithButton 
                 editable={false}
                 onPress={this.handlePressQuoteCurrency}
                 buttonText={TEMP_QUOTE_CURR}
+                value={TEMP_QUOTE_PRICE}
                 />
             <View />
         </Container>

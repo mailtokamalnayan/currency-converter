@@ -7,7 +7,6 @@ export default EStyleSheet.create({
         flexDirection: 'row',
     },
     buttonContainer: {
-        
     },
     buttonText: {
         backgroundColor: 'white',
@@ -19,7 +18,9 @@ export default EStyleSheet.create({
         height: '2rem',
         width: '8rem'
     },
+    containerDisabled: {
+        backgroundColor: 'white'
+    },
     border: {
-
-    }
+    },
 });
