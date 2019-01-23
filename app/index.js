@@ -1,10 +1,10 @@
 import React from 'react';
 import Home from './screens/Home';
 import EStyleSheet from "react-native-extended-stylesheet";
-import CurrencyList from './screens/CurrencyList'
+import Navigator from './config/routes';
 
 EStyleSheet.build({
     $primaryYellow: '#FFDC00',
 })
 
-export default () => <CurrencyList />;
+export default () => <Navigator />;
