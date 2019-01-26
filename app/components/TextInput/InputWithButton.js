@@ -12,7 +12,13 @@ const InputWithButton = ({ editable, onPress, buttonText, ...props }) => {
 
   return (
     <View style={containerStyles}>
-      <TextInput style={inputStyles} {...props} />
+      <TextInput
+        editable={editable}
+        adjustsFontSizeToFit
+        minimumFontScale={0.5}
+        style={inputStyles}
+        {...props}
+      />
       <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
