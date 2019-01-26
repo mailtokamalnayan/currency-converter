@@ -14,7 +14,6 @@ const InputWithButton = ({ editable, onPress, buttonText, ...props }) => {
     <View style={containerStyles}>
       <TextInput
         editable={editable}
-        adjustsFontSizeToFit
         minimumFontScale={0.5}
         style={inputStyles}
         {...props}
