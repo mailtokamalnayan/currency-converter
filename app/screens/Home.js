@@ -18,6 +18,7 @@ import {
 
 import { Container } from "../components/Container";
 import { InputWithButton } from "../components/TextInput";
+import { CurrencySelector } from "../components/CurrencySelector";
 
 class Home extends Component {
   static propTypes = {
@@ -75,6 +76,16 @@ class Home extends Component {
       <Container>
         <SafeAreaView>
           <StatusBar barStyle={"default"} />
+
+          <CurrencySelector
+            buttonText={this.props.baseCurrency}
+            onPress={this.handlePressBaseCurrency}
+          />
+          <CurrencySelector
+            buttonText={this.props.quoteCurrency}
+            onPress={this.handlePressQuoteCurrency}
+          />
+
           <InputWithButton
             defaultValue={this.props.amount.toString()}
             onPress={this.handlePressBaseCurrency}
