@@ -9,6 +9,7 @@ import {
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { connectAlert } from "../components/Alert";
+import Icon from "react-native-vector-icons/Feather";
 
 import {
   swapCurrency,
@@ -77,14 +78,37 @@ class Home extends Component {
         <SafeAreaView>
           <StatusBar barStyle={"default"} />
 
-          <CurrencySelector
-            buttonText={this.props.baseCurrency}
-            onPress={this.handlePressBaseCurrency}
-          />
-          <CurrencySelector
-            buttonText={this.props.quoteCurrency}
-            onPress={this.handlePressQuoteCurrency}
-          />
+          <View
+            style={{
+              marginVertical: 24,
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row"
+            }}
+          >
+            <CurrencySelector
+              buttonText={this.props.baseCurrency}
+              onPress={this.handlePressBaseCurrency}
+            />
+            <View
+              style={{
+                width: 36,
+                height: 36,
+                borderWidth: 1,
+                borderRadius: 24,
+                justifyContent: "center",
+                alignItems: "center",
+                marginHorizontal: 24,
+                borderColor: "rgba(255, 255, 255, 0.1)"
+              }}
+            >
+              <Icon name="code" size={16} color="rgba(255, 255, 255, 0.4)" />
+            </View>
+            <CurrencySelector
+              buttonText={this.props.quoteCurrency}
+              onPress={this.handlePressQuoteCurrency}
+            />
+          </View>
 
           <InputWithButton
             defaultValue={this.props.amount.toString()}
