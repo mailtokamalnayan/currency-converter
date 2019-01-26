@@ -76,7 +76,7 @@ class Home extends Component {
     return (
       <Container>
         <SafeAreaView>
-          <StatusBar barStyle={"default"} />
+          <StatusBar barStyle={"light-content"} />
 
           <View
             style={{
