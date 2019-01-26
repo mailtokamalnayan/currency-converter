@@ -34,7 +34,7 @@ class Home extends Component {
     const { currencyError, alertWithType } = this.props;
     if (nextProps.currencyError && !currencyError) {
       //TODO: Use AlertWithType
-      alert("Error occurred", "Error", nextProps.currencyError);
+      alert(nextProps.currencyError, "Error", nextProps.currencyError);
     }
   }
 
