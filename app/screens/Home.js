@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { View, StatusBar, TouchableOpacity, Text } from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { connectAlert } from "../components/Alert";
+
 import {
   swapCurrency,
   changeCurrencyAmount,
@@ -19,11 +21,21 @@ class Home extends Component {
     quoteCurrency: PropTypes.string,
     amount: PropTypes.number,
     conversionRate: PropTypes.number,
-    isFetching: PropTypes.bool
+    isFetching: PropTypes.bool,
+    currencyError: PropTypes.string,
+    alertWithType: PropTypes.func
   };
 
   componentWillMount() {
     this.props.dispatch(getInitialConversion());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { currencyError, alertWithType } = this.props;
+    if (nextProps.currencyError && !currencyError) {
+      //TODO: Use AlertWithType
+      alert("Error occurred", "Error", nextProps.currencyError);
+    }
   }
 
   handlePressBaseCurrency = () => {
@@ -88,8 +100,9 @@ const mapStateToProps = state => {
     quoteCurrency,
     amount: state.currencies.amount,
     conversionRate: rates[quoteCurrency] || 0,
-    isFetching: conversionSelector.isFetching
+    isFetching: conversionSelector.isFetching,
+    currencyError: state.currencies.error
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(connectAlert(Home));
