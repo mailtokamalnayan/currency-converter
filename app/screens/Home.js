@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, StatusBar, TouchableOpacity, Text } from "react-native";
+import {
+  View,
+  StatusBar,
+  TouchableOpacity,
+  Text,
+  SafeAreaView
+} from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { connectAlert } from "../components/Alert";
@@ -67,24 +73,26 @@ class Home extends Component {
     }
     return (
       <Container>
-        <StatusBar barStyle={"default"} />
-        <InputWithButton
-          defaultValue={this.props.amount.toString()}
-          onPress={this.handlePressBaseCurrency}
-          buttonText={this.props.baseCurrency}
-          keyboardType="numeric"
-          onChangeText={this.handleTextChange}
-        />
-        <InputWithButton
-          editable={false}
-          onPress={this.handlePressQuoteCurrency}
-          buttonText={this.props.quoteCurrency}
-          value={quotePrice}
-        />
-        <View />
-        <TouchableOpacity onPress={this.handleSwapCurrency}>
-          <Text>Swap currency</Text>
-        </TouchableOpacity>
+        <SafeAreaView>
+          <StatusBar barStyle={"default"} />
+          <InputWithButton
+            defaultValue={this.props.amount.toString()}
+            onPress={this.handlePressBaseCurrency}
+            buttonText={this.props.baseCurrency}
+            keyboardType="numeric"
+            onChangeText={this.handleTextChange}
+          />
+          <InputWithButton
+            editable={false}
+            onPress={this.handlePressQuoteCurrency}
+            buttonText={this.props.quoteCurrency}
+            value={quotePrice}
+          />
+          <View />
+          <TouchableOpacity onPress={this.handleSwapCurrency}>
+            <Text>Swap currency</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
       </Container>
     );
   }
