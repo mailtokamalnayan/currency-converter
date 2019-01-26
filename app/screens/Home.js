@@ -90,43 +90,43 @@ class Home extends Component {
               buttonText={this.props.baseCurrency}
               onPress={this.handlePressBaseCurrency}
             />
-            <View
-              style={{
-                width: 36,
-                height: 36,
-                borderWidth: 1,
-                borderRadius: 24,
-                justifyContent: "center",
-                alignItems: "center",
-                marginHorizontal: 24,
-                borderColor: "rgba(255, 255, 255, 0.1)"
-              }}
-            >
-              <Icon name="code" size={16} color="rgba(255, 255, 255, 0.4)" />
-            </View>
+            <TouchableOpacity onPress={this.handleSwapCurrency}>
+              <View
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderWidth: 1,
+                  borderRadius: 24,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginHorizontal: 24,
+                  borderColor: "rgba(255, 255, 255, 0.1)"
+                }}
+              >
+                <Icon name="code" size={16} color="rgba(255, 255, 255, 0.4)" />
+              </View>
+            </TouchableOpacity>
             <CurrencySelector
               buttonText={this.props.quoteCurrency}
               onPress={this.handlePressQuoteCurrency}
             />
           </View>
-
-          <InputWithButton
-            defaultValue={this.props.amount.toString()}
-            onPress={this.handlePressBaseCurrency}
-            buttonText={this.props.baseCurrency}
-            keyboardType="numeric"
-            onChangeText={this.handleTextChange}
-          />
-          <InputWithButton
-            editable={false}
-            onPress={this.handlePressQuoteCurrency}
-            buttonText={this.props.quoteCurrency}
-            value={quotePrice}
-          />
+          <View style={{ marginTop: 36 }}>
+            <InputWithButton
+              editable={false}
+              onPress={this.handlePressQuoteCurrency}
+              buttonText={this.props.quoteCurrency}
+              value={quotePrice}
+            />
+            <InputWithButton
+              defaultValue={this.props.amount.toString()}
+              onPress={this.handlePressBaseCurrency}
+              buttonText={this.props.baseCurrency}
+              keyboardType="numeric"
+              onChangeText={this.handleTextChange}
+            />
+          </View>
           <View />
-          <TouchableOpacity onPress={this.handleSwapCurrency}>
-            <Text>Swap currency</Text>
-          </TouchableOpacity>
         </SafeAreaView>
       </Container>
     );
