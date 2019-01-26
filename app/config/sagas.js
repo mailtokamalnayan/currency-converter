@@ -13,7 +13,7 @@ import {
 } from "../actions/currencies";
 
 const getLatestRate = currency =>
-  fetch(`https://fixer.handlebarlabs.com/latest?base=${currency}`);
+  fetch(`https://api.exchangeratesapi.io/latest?base=${currency}`);
 
 function* fetchLatestConversionRates(action) {
   try {
