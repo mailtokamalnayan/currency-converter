@@ -15,6 +15,7 @@ export default EStyleSheet.create({
   },
   input: {
     fontSize: "2rem",
+    fontWeight: "300",
     color: "white",
     borderBottomWidth: 2,
     borderColor: "rgba(255,255,255,0.4)"

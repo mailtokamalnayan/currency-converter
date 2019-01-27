@@ -23,7 +23,12 @@ const QuotePriceText = props => {
             <Text
               adjustsFontSizeToFit
               numberOfLines={1}
-              style={{ fontSize: 48, color: "#fff", textAlign: "center" }}
+              style={{
+                fontSize: 64,
+                color: "#fff",
+                textAlign: "center",
+                fontWeight: "300"
+              }}
             >
               {value}
             </Text>
