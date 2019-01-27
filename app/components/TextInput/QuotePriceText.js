@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, Text } from "react-native";
+import NumberFormat from "react-number-format";
 
 const QuotePriceText = props => {
   const { quotePrice, quoteCurrency } = props;
@@ -14,13 +15,20 @@ const QuotePriceText = props => {
           justifyContent: "center"
         }}
       >
-        <Text
-          adjustsFontSizeToFit
-          numberOfLines={1}
-          style={{ fontSize: 48, color: "#fff", textAlign: "center" }}
-        >
-          {quotePrice}
-        </Text>
+        <NumberFormat
+          value={quotePrice}
+          displayType={"text"}
+          thousandSeparator={true}
+          renderText={value => (
+            <Text
+              adjustsFontSizeToFit
+              numberOfLines={1}
+              style={{ fontSize: 48, color: "#fff", textAlign: "center" }}
+            >
+              {value}
+            </Text>
+          )}
+        />
         <Text
           style={{
             color: "rgba(255,255,255, 0.2)",
