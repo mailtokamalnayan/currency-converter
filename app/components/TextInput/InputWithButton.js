@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
-import NumberFormat from "react-number-format";
 
 const InputWithButton = ({ editable, onPress, buttonText, ...props }) => {
   const containerStyles = [styles.container];
