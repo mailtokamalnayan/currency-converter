@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { connectAlert } from "../components/Alert";
 import Icon from "react-native-vector-icons/Feather";
+import moment from "moment";
 
 import {
   swapCurrency,
@@ -32,7 +33,8 @@ class Home extends Component {
     conversionRate: PropTypes.number,
     isFetching: PropTypes.bool,
     currencyError: PropTypes.string,
-    alertWithType: PropTypes.func
+    alertWithType: PropTypes.func,
+    lastConvertedDate: PropTypes.object
   };
 
   componentWillMount() {
@@ -113,7 +115,27 @@ class Home extends Component {
             />
           </View>
 
-          <View style={{ marginTop: 36 }}>
+          <View style={{ alignItems: "center" }}>
+            <Text style={{ fontSize: 16, color: "rgba(255,255,255,0.9)" }}>
+              {"1 " +
+                this.props.baseCurrency +
+                " = " +
+                this.props.conversionRate.toFixed(2) +
+                " " +
+                this.props.quoteCurrency}
+            </Text>
+            <Text
+              style={{
+                color: "rgba(255, 255, 255, 0.4)",
+                marginTop: 8,
+                textAlign: "center"
+              }}
+            >
+              Last updated: {moment(this.props.lastConvertedDate).fromNow()}
+            </Text>
+          </View>
+
+          <View style={{ marginTop: 24 }}>
             <QuotePriceText
               quotePrice={quotePrice}
               quoteCurrency={this.props.quoteCurrency}
@@ -142,7 +164,10 @@ const mapStateToProps = state => {
     amount: state.currencies.amount,
     conversionRate: rates[quoteCurrency] || 0,
     isFetching: conversionSelector.isFetching,
-    currencyError: state.currencies.error
+    currencyError: state.currencies.error,
+    lastConvertedDate: conversionSelector.date
+      ? new Date(conversionSelector.date)
+      : new Date()
   };
 };
 
