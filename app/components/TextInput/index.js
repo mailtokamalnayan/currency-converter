@@ -1,4 +1,5 @@
 import InputWithButton from "./InputWithButton";
 import styles from "./styles";
+import QuotePriceText from "./QuotePriceText";
 
-export { InputWithButton, styles };
+export { InputWithButton, styles, QuotePriceText };

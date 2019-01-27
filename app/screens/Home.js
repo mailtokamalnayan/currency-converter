@@ -20,6 +20,7 @@ import {
 import { Container } from "../components/Container";
 import { InputWithButton } from "../components/TextInput";
 import { CurrencySelector } from "../components/CurrencySelector";
+import { QuotePriceText } from "../components/TextInput";
 
 class Home extends Component {
   static propTypes = {
@@ -111,22 +112,19 @@ class Home extends Component {
               onPress={this.handlePressQuoteCurrency}
             />
           </View>
+
           <View style={{ marginTop: 36 }}>
-            <InputWithButton
-              editable={false}
-              onPress={this.handlePressQuoteCurrency}
-              buttonText={this.props.quoteCurrency}
-              value={quotePrice}
+            <QuotePriceText
+              quotePrice={quotePrice}
+              quoteCurrency={this.props.quoteCurrency}
             />
             <InputWithButton
               defaultValue={this.props.amount.toString()}
-              onPress={this.handlePressBaseCurrency}
               buttonText={this.props.baseCurrency}
               keyboardType="numeric"
               onChangeText={this.handleTextChange}
             />
           </View>
-          <View />
         </SafeAreaView>
       </Container>
     );
