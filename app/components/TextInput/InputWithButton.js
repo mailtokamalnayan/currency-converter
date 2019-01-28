@@ -1,30 +1,29 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
 
-const InputWithButton = ( props ) => {
-    const { onPress, buttonText, editable = true} = props;
-    const ContainerStyles = [styles.input];
+const InputWithButton = ({ editable, onPress, buttonText, ...props }) => {
+  const containerStyles = [styles.container];
+  const inputStyles = [styles.input];
+  if (editable === false) {
+    inputStyles.push(styles.inputDisabled);
+  }
 
-    if (editable === false ) {
-        ContainerStyles.push(styles.containerDisabled);
-    }
-    return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
-                <Text style={styles.buttonText}>{buttonText}</Text>
-            </TouchableOpacity>
-            <View styles={styles.border} />
-            <TextInput style={styles.input} {...props}/>
-        </View>
-    )
+  return (
+    <View style={containerStyles}>
+      <TextInput editable={editable} style={inputStyles} {...props} />
+      <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>{buttonText}</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 InputWithButton.propTypes = {
-    onPress: PropTypes.func,
-    buttonText: PropTypes.string,
-    editable: PropTypes.bool,
+  onPress: PropTypes.func,
+  buttonText: PropTypes.string,
+  editable: PropTypes.bool
 };
 
 export default InputWithButton;
